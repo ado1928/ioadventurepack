@@ -2,7 +2,7 @@ name: Create Zip Archive
 
 on:
   push:
-    tags:
+    branches:
       - '*'
 
   workflow_dispatch:
@@ -17,9 +17,10 @@ jobs:
       with:
         type: 'zip'
         filename: 'io-adventure-pack.zip'
-        exclusions: '*.git* *.zip'
+        exclusions: '*.git* *.zip README.md'
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "io-adventure-pack"
+        artifacts: "io-adventure-pack.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: 'v1.0'
