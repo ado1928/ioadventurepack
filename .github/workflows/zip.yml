@@ -3,7 +3,7 @@ name: Create Zip Archive
 on:
   push:
     branches:
-      - '*'
+      - "*"
 
   workflow_dispatch:
 
@@ -11,16 +11,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Create Zip
-      uses: thedoctor0/zip-release@master
-      with:
-        type: 'zip'
-        filename: 'io-adventure-pack.zip'
-        exclusions: '*.git* *.zip README.md'
-    - name: Upload Release
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "io-adventure-pack.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
-        tag: 'v1.0'
+      - uses: actions/checkout@master
+      - name: Create Zip
+        uses: thedoctor0/zip-release@master
+        with:
+          type: "zip"
+          filename: "io-adventure-pack.zip"
+          exclusions: "*.git* *.zip README.md"
+      - uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        with:
+          delete_release: true
+          tag_name: v1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "io-adventure-pack.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "v1.0"
