@@ -19,8 +19,8 @@ jobs:
           type: "zip"
           filename: "io-adventure-pack.zip"
           exclusions: "*.git* *.zip README.md"
-      - uses: dev-drprasad/delete-tag-and-release@v0.2.0
       - name: Remove Old Release
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
           delete_release: true
           tag_name: v1.0
