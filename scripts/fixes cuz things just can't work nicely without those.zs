@@ -1,2 +1,2 @@
-recipes.removeByRecipeName("thaumcraft:ambertoblock");
-recipes.removeByRecipeName("thaumcraft:amberblocktoamber");
+recipes.removeByRecipeName("biomesoplenty:amber_block");
+recipes.removeByRecipeName("biomesoplenty:amber");
